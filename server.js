@@ -12,7 +12,9 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 
 
-app.use(cors());
+const corsOptions = {
+  origin:https: '//farmacia-api-5y3q.onrender.com'
+};      
 
 app.use(express.json());
 
