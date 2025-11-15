@@ -13,10 +13,15 @@ const PORT = process.env.PORT || 4000;
 
 
 const corsOptions = {
-  origin:https: '//farmacia-api-5y3q.onrender.com'
+  origin: 'https://farmacia-api-5y3q.onrender.com'
 };      
 
+
+app.use(cors(corsOptions));
+
+
 app.use(express.json());
+
 
 mongoose.connect(process.env.MONGO_URI)
     .then(() => 
