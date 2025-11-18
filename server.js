@@ -3,16 +3,24 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 
+const app = express();
+const PORT = process.env.PORT || 4000;
+
+const corsOptions = {
+    origin: 'https://farmacia-react-v2.vercel.app'
+}
+
 const authRoutes = require('./routes/authRoutes');
 
 const remedio_routes = require('./routes/remedioRoutes');
 const pedido_routes = require('./routes/pedidoRoutes');
 
-const app = express();
-const PORT = process.env.PORT || 4000;
 
 
-app.use(cors());
+
+app.use(cors(corsOptions));
+
+
 
 app.use(express.json());
 
