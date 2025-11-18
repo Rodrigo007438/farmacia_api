@@ -1,19 +1,27 @@
-require('dotenv').config();
-const express = require('express');
-const cors = require('cors');
-const mongoose = require('mongoose');
-
-const authRoutes = require('./routes/authRoutes');
-const remedio_routes = require('./routes/remedioRoutes');
-const pedido_routes = require('./routes/pedidoRoutes');
-
 const app = express();
 const PORT = process.env.PORT || 4000;
 
-
-app.use(cors()); 
+// --- A MARRETA (CORS MANUAL) ---
+// Isso força o cabeçalho em TODAS as respostas, na marra.
+app.use((req, res, next) => {
+    // "Qualquer um pode entrar (*)"
+    res.header("Access-Control-Allow-Origin", "*");
+    // "Aceito esses métodos"
+    res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE");
+    // "Aceito esses cabeçalhos"
+    res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+    
+    // Se for só um "olá" do navegador (OPTIONS), libera logo
+    if (req.method === 'OPTIONS') {
+        return res.status(200).send({});
+    }
+    
+    next();
+});
+// -------------------------------
 
 app.use(express.json());
+// ... resto do código ...
 
 mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log('CONECTANDO AO BANCO DE DADOS'))
