@@ -14,17 +14,10 @@ const remedio_routes = require('./routes/remedioRoutes');
 const pedido_routes = require('./routes/pedidoRoutes');
 
 
-const corsOptions = {
-  origin: 'https://farmacia-react-v2.vercel.app',
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Autorization'],
-  Credentials: true
-};      
-
 
 app.use(cors(corsOptions));
 
-app.use('*', cors(corsOptions));
+
 
 app.use(express.json());
 
