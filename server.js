@@ -13,13 +13,13 @@ const pedido_routes = require('./routes/pedidoRoutes');
 const app = express();
 const PORT = process.env.PORT || 4000;
 
-const corsOptions = {
-  origin: 'https://farmacia-react-v2.vercel.app'
-};
+//const corsOptions = {
+  //origin: 'https://farmacia-react-v2.vercel.app'
+//};
 
 
 
-app.use(cors(corsOptions));
+app.use(cors());
 
 
 
