@@ -15,12 +15,16 @@ const pedido_routes = require('./routes/pedidoRoutes');
 
 
 const corsOptions = {
-  origin: 'https://farmacia-react-v2.vercel.app'
+  origin: 'https://farmacia-react-v2.vercel.app',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Autorization'],
+  Credentials: true
 };      
 
 
 app.use(cors(corsOptions));
 
+app.use('*', cors(corsOptions));
 
 app.use(express.json());
 
@@ -36,5 +40,5 @@ app.use('/api/auth', authRoutes);
 
 app.listen(PORT, () =>{
     console.log(`Servidor rodando na porta ${PORT}`);
-})
+});
 
