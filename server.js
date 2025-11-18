@@ -10,14 +10,12 @@ const pedido_routes = require('./routes/pedidoRoutes');
 const app = express();
 const PORT = process.env.PORT || 4000;
 
-// --- CONFIGURAÇÃO CORS (LIBERA GERAL) ---
-// O '*' significa: Aceite conexões de QUALQUER lugar do universo.
+
 app.use(cors({
-    origin: '*',
+   
+    origin: 'https://farmacia-react-v2.vercel.app', 
     methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH']
 }));
-// ----------------------------------------
-
 app.use(express.json());
 
 // Conexão com o Banco
