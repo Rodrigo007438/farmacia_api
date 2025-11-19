@@ -11,11 +11,18 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 
 
+// Configuração do CORS
 app.use(cors({
-   
-    origin: 'https://farmacia-react-v2.vercel.app', 
-    methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH']
+    origin: [
+        'https://farmacia-react-v2.vercel.app', // Seu site na Vercel (SEM BARRA NO FINAL)
+        'https://farmacia-react-v2.vercel.app/', // Garantia caso venha com barra (opcional, mas seguro)
+        'http://localhost:5173', // Vite (Local)
+        'http://localhost:3000'  // Create React App (Local)
+    ],
+    methods: ['GET', 'POST', 'DELETE', 'PUT', 'PATCH'], // "UPDATE" não existe, removi.
+    allowedHeaders: ['Content-Type', 'Authorization'] // Cabeçalhos comuns
 }));
+
 app.use(express.json());
 
 // Conexão com o Banco
