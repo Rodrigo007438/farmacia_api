@@ -10,6 +10,10 @@ const pedido_routes = require('./routes/pedidoRoutes');
 const app = express();
 const PORT = process.env.PORT || 4000;
 
+app.get('/teste', (req, res) => {
+    res.send('O Servidor está vivo e funcionando!');
+});
+
 
 // Configuração do CORS
 app.use(cors({
